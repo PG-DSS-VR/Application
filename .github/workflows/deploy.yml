@@ -23,6 +23,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: pull
         uses: actions/checkout@v3
+        with:
+          ref: deployment
 
       - name: Setup Unity
         uses: kuler90/setup-unity@v1
