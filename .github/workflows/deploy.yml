@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: deploy
 
 # Controls when the workflow will run
 on:
@@ -34,7 +34,7 @@ jobs:
         with:
           unity-username: ${{ secrets.UNITY_USERNAME }}
           unity-password: ${{ secrets.UNITY_PASSWORD }}
-          unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
+          #unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
 
       - name: Build Unity
         uses: kuler90/build-unity@v1
