@@ -1,5 +1,5 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This project is a first attempt at digitizing sacred spaces in VR. The application features Islam and Christianity and provides several spaces to explore these two religions. Users can freely learn about the religion in general or experience a specific part of the religion. Currently users can either explore a holy mass inside a church or follow the journey of the pilgrims during Hajj, Islam's yearly pilgrimage to Mecca.
 
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
@@ -10,13 +10,3 @@ TODO: Guide users through getting your code up and running on their own system. 
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
-
-test
