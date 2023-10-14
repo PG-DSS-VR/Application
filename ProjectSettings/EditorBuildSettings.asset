@@ -15,8 +15,44 @@ EditorBuildSettings:
     path: Assets/Scenes/Catholic.unity
     guid: b4ad555cc59da4009be7689851cd5d14
   - enabled: 1
-    path: Assets/Scenes/Islam.unity
+    path: Assets/Scenes/Kaaba.unity
     guid: a7cfec6fb8dde40c19407fc99390f565
+  - enabled: 1
+    path: Assets/Scenes/IslamBots.unity
+    guid: 0cb3b2633bcc548fabc4ad9ada9c7d06
+  - enabled: 1
+    path: Assets/Scenes/Catholic_church.unity
+    guid: b8cf2b53bafe04f8aa0c9b547a17b868
+  - enabled: 1
+    path: Assets/Scenes/Islam.unity
+    guid: 4143ac13e66ca354dbcb19f4e46f93df
+  - enabled: 1
+    path: Assets/Scenes/Tent_City.unity
+    guid: f60543687ba1c5c4ba7c733a3c26b8bb
+  - enabled: 1
+    path: Assets/Scenes/Arafat.unity
+    guid: 7a0f1805cac81c944aea1c650195bfd8
+  - enabled: 1
+    path: Assets/Scenes/Landing_Room.unity
+    guid: 04cc45ccba74d2840abec2be4051f12a
+  - enabled: 1
+    path: Assets/Scenes/Muzdalifah.unity
+    guid: a2881232823858f4eba5b431bbbbdcb5
+  - enabled: 1
+    path: Assets/Scenes/Pillars_Current.unity
+    guid: 37ca0bb09cc266f45aaef67e8fbb8d55
+  - enabled: 1
+    path: Assets/Scenes/Pillars_Previous.unity
+    guid: 6d4bdf6cf3996a449942f8ede34fa414
+  - enabled: 1
+    path: Assets/Scenes/Safa_Marwa.unity
+    guid: 81861ffdbf87bae4787ec3405992032e
+  - enabled: 1
+    path: Assets/Scenes/Kaaba_Inside.unity
+    guid: d23dfc0ff549a6143871fea6affe1413
+  - enabled: 1
+    path: Assets/Scenes/Departure_Room.unity
+    guid: 8e2adf60961aa7245b791d3dc92cfed9
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d202451941d186747bb6ce892ab46602,
       type: 2}

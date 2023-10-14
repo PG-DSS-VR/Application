@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - LocalPlayer
+  - SamplesInfoPanel
+  - ConfessionAnimation
+  - confessionCurtainOpen
+  - churchBot
+  - sceneTrigger
+  - portalTrigger
+  - Pebble
+  - networkPlayer
   layers:
   - Default
   - TransparentFX
@@ -15,6 +23,7 @@ TagManager:
   - Player
   - Environment
   - Interactable
+  - grab
   - 
   - 
   - 
@@ -36,8 +45,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - HLOD
   m_SortingLayers:
   - name: Default
     uniqueID: 0

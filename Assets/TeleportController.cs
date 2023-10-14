@@ -26,9 +26,9 @@ public class TeleportController : MonoBehaviour
     private void TeleportModeCancel(InputAction.CallbackContext obj)
     {
         if (KeyboardManager.keyboardActive) {
-            Invoke("DeactivateTeleporterKeyboard", .1f);
+            Invoke("DeactivateTeleporterKeyboard", 0);
         } else {
-            Invoke("DeactivateTeleporter", .1f);
+            Invoke("DeactivateTeleporter", 0);
         }
     }
 
@@ -43,5 +43,9 @@ public class TeleportController : MonoBehaviour
     private void TeleporModeActivate(InputAction.CallbackContext obj)
     {
         teleportStart.Invoke();
+    }
+
+    public void AbortTeleportation() {
+        teleportEnd.Invoke();
     }
 }

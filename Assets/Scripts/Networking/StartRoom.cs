@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using TMPro;
 using System;
+using UnityEngine.Events;
 
 public class StartRoom : MonoBehaviourPunCallbacks {
 
@@ -39,10 +40,25 @@ public class StartRoom : MonoBehaviourPunCallbacks {
     [SerializeField]
     private Toggle publ;
 
-    //TODO make customizable through script
-    [Tooltip("The dropdown where players can choose the Environment")]
+    public UnityEvent LoadingStarts;
+    public UnityEvent CreatingFails;
+    public UnityEvent JoiningFails;
+
     [SerializeField]
-    private TMP_Dropdown environment;
+    public GameObject InitialScreen;
+    [SerializeField]
+    public GameObject JoinScreen;
+    [SerializeField]
+    public GameObject CreateScreen;
+    [SerializeField]
+    public GameObject EnvironmentScreen;
+    [SerializeField]
+    public GameObject Panel;
+    [SerializeField]
+    public GameObject BackSide;
+
+    public string environmentName;
+
 
     public Toggle Offline;
 
@@ -92,7 +108,7 @@ public class StartRoom : MonoBehaviourPunCallbacks {
 
 
     public void checkToggle() {
-        if (this.publ.enabled && this.priv.enabled) {
+        if (this.publ.isOn && this.priv.isOn) {
             ToggleWarning.gameObject.SetActive(true);
         } else {
             ToggleWarning.gameObject.SetActive(false);
@@ -103,20 +119,22 @@ public class StartRoom : MonoBehaviourPunCallbacks {
         PhotonNetwork.OfflineMode = Offline.isOn;
         JoinBtn.enabled = !Offline.isOn;
     }
-   
+
+    private byte maxPlayer;
+
+
     private void CreateRoomInternal(string newRoomName) {
         Debug.Log("Trying to create room");
 
         //feedbackText.SetActive(true);
         //controlPanel.SetActive(false);
 
-        roomNameToConnectTo = newRoomName;
-        byte maxPlayer = (byte)1;
-        if (publ.enabled) {
+        maxPlayer = (byte)1;
+        if (publ.isOn) {
             maxPlayer = (byte)20;
         }
 
-        if(publ.enabled && priv.enabled) {
+        if(publ.isOn && priv.isOn) {
             Debug.Log("Not allowed to have both toggles active at the same time!");
             return;
         }
@@ -127,26 +145,39 @@ public class StartRoom : MonoBehaviourPunCallbacks {
         if (PhotonNetwork.IsConnected) {
             PhotonNetwork.CreateRoom(newRoomName, new RoomOptions { MaxPlayers = maxPlayer });
             if (PhotonNetwork.OfflineMode) {
-                PhotonNetwork.LoadLevel(environment.captionText.text);
+                PhotonNetwork.LoadLevel(environmentName);
             }
         } else {
+            CreatingFails.Invoke();
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = this.gameVersion;
         }
     }
 
     [ContextMenu("Create Room")]
-    public void CreateRoom() {
+    public void CreateRoom(string name) {
+        environmentName = name;
+        byte maxPlayer = (byte)1;
+        if (publ.isOn) {
+            maxPlayer = (byte)20;
+        }
+
+        if (publ.isOn && priv.isOn) {
+            Debug.Log("Not allowed to have both toggles active at the same time!");
+            return;
+        }
+        LoadingStarts.Invoke();
         CreateRoomInternal(newRoomNameInput.text);
     }
 
     public void Connect() {
         //feedbackText.SetActive(true);
         //controlPanel.SetActive(false);
-
         string roomName = joinRoomNameInput.text;
 
         roomNameToConnectTo = roomName;
+        LoadingStarts.Invoke();
+
 
         isConnecting = true;
         isCreatingRoom = false;
@@ -155,8 +186,55 @@ public class StartRoom : MonoBehaviourPunCallbacks {
             Debug.Log("Trying to join room " + roomName);
             PhotonNetwork.JoinRoom(roomName);
         } else {
+            JoiningFails.Invoke();
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = this.gameVersion;
+        }
+    }
+
+    public GameObject nameEmptyError;
+
+    public void CreateRoomPanel() {
+        if (string.IsNullOrWhiteSpace(playerNicknameInput.text)) {
+            nameEmptyError.SetActive(true);
+        } else {
+            InitialScreen.SetActive(false);
+            CreateScreen.SetActive(true);
+            nameEmptyError.SetActive(false);
+        }
+    }
+
+    public void ChooseEnvironment() {
+        CreateScreen.SetActive(false);
+        EnvironmentScreen.SetActive(true);
+    }
+
+    public void BackToInitialPanel() {
+        CreateScreen.SetActive(false);
+        JoinScreen.SetActive(false);
+        EnvironmentScreen.SetActive(false);
+        InitialScreen.SetActive(true);
+    }
+
+    public void ChooseFinish() {
+        EnvironmentScreen.SetActive(false);
+        Panel.SetActive(false);
+        BackSide.SetActive(false);
+    }
+
+    public void PlayOffline() {
+        InitialScreen.SetActive(false);
+        OfflineMode();
+        ChooseEnvironment();
+    }
+
+    public void JoinRoomPanel() {
+        if (string.IsNullOrWhiteSpace(playerNicknameInput.text)) {
+            nameEmptyError.SetActive(true);
+        } else {
+            InitialScreen.SetActive(false);
+            JoinScreen.SetActive(true);
+            nameEmptyError.SetActive(false);
         }
     }
 
@@ -192,6 +270,7 @@ public class StartRoom : MonoBehaviourPunCallbacks {
         //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = this.maxPlayersPerRoom });
         isConnecting = false;
         isCreatingRoom = false;
+        JoiningFails.Invoke();
 
         //feedbackText.gameObject.SetActive(false);
         controlPanel.SetActive(true);
@@ -202,6 +281,7 @@ public class StartRoom : MonoBehaviourPunCallbacks {
 
         isConnecting = false;
         isCreatingRoom = false;
+        JoiningFails.Invoke();
 
         //feedbackText.gameObject.SetActive(false);
         controlPanel.SetActive(true);
@@ -212,6 +292,7 @@ public class StartRoom : MonoBehaviourPunCallbacks {
 
         isConnecting = false;
         isCreatingRoom = false;
+        CreatingFails.Invoke();
 
         //feedbackText.gameObject.SetActive(false);
         controlPanel.SetActive(true);
@@ -254,7 +335,7 @@ public class StartRoom : MonoBehaviourPunCallbacks {
 
             // #Critical
             // Load the Lobby Level. 
-            PhotonNetwork.LoadLevel(environment.captionText.text);
+            PhotonNetwork.LoadLevel(environmentName);
         }
     }
 

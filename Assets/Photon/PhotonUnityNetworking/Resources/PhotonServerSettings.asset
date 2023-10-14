@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: 0315dc10-efef-419f-af20-7394ff9a5080
     AppIdFusion: 
     AppIdChat: 
-    AppIdVoice: 
+    AppIdVoice: c5662153-e0fc-46f9-b976-907e1333d807
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
@@ -43,6 +43,27 @@ MonoBehaviour:
   - HeresWhy
   - RespawnSpaceship
   - MasterExitRoom
+  - playWelcomeAudioRPC
+  - AbortAnimation
+  - confessionAnimationRPC
+  - entranceAnimationRPC
+  - PauseAnimation
+  - botSitInConfessionRPC
+  - InitiateOpenQuranInternal
+  - PlayTriggerAudioInternal
+  - StopAudioInternal
+  - InitiateCloseQuranInternal
+  - PhotonLoadNewScene
+  - StartRoom
+  - triggerCalled
+  - Abort
+  - Pause
+  - Confession
+  - ConfessionTwo
+  - Entrance
+  - InternalActivator
+  - InternalActivatePorta
+  - InternalActivatePortal
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1

@@ -19,15 +19,37 @@ public class NetworkPlayerRPCs : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void MasterExitRoom()
-    {
-        StartCoroutine(Exit());
+    public void MasterExitRoom() {
+        PhotonNetwork.LeaveRoom();
     }
 
-    IEnumerator Exit() {
-        if (PhotonNetwork.IsMasterClient) {
-            yield return new WaitForSecondsRealtime(1);
-        }
-        PhotonNetwork.LeaveRoom();
+    [PunRPC]
+    public void Abort() {
+        GameObject bot = GameObject.Find("christ_bot");
+        bot.GetComponent<followPlayer>().AbortAnimation();
+    }
+
+    //[PunRPC]
+    //public void Pause() {
+    //    GameObject bot = GameObject.Find("christ_bot");
+    //    bot.GetComponent<followPlayer>().PauseAnimation();
+    //}
+
+    [PunRPC]
+    public void Entrance() {
+        GameObject bot = GameObject.Find("christ_bot");
+        bot.GetComponent<followPlayer>().entranceAnimationRPC();
+    }
+
+    [PunRPC]
+    public void Confession() {
+        GameObject bot = GameObject.Find("christ_bot");
+        bot.GetComponent<followPlayer>().confessionAnimationRPC();
+    }
+
+    [PunRPC]
+    public void ConfessionTwo() {
+        GameObject bot = GameObject.Find("christ_bot");
+        bot.GetComponent<followPlayer>().botSitInConfessionRPC();
     }
 }

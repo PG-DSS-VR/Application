@@ -118,6 +118,7 @@ Library: /Users/juliankarch/Projects/Application/Temp/StagingArea/tempburstlibs/
 --compilation-defines=PUN_2_19_OR_NEWER
 --compilation-defines=CROSS_PLATFORM_INPUT
 --compilation-defines=MOBILE_INPUT
+--compilation-defines=ENABLE_UNITYMESHSIMPLIFIER
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
@@ -158,6 +159,15 @@ Library: /Users/juliankarch/Projects/Application/Temp/StagingArea/tempburstlibs/
 --compilation-defines=LIH_PRESENT
 --compilation-defines=ANIMATION_MODULE_PRESENT
 --compilation-defines=PHYSICS2D_MODULE_PRESENT
+--compilation-defines=CINEMACHINE_TIMELINE
+--compilation-defines=CINEMACHINE_PHYSICS_2D
+--compilation-defines=CINEMACHINE_PHYSICS
+--compilation-defines=CINEMACHINE_UGUI
+--compilation-defines=CINEMACHINE_LWRP_7_3_1
+--compilation-defines=CINEMACHINE_UNITY_INPUTSYSTEM
+--compilation-defines=CINEMACHINE_UNITY_ANIMATION
+--compilation-defines=CINEMACHINE_UNITY_IMGUI
+--compilation-defines=USING_PARTICLE_SYSTEM
 --compilation-defines=INCLUDE_PHYSICS_MODULE
 --compilation-defines=INCLUDE_UGUI
 --compilation-defines=INCLUDE_INPUT_SYSTEM
