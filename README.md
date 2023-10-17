@@ -8,11 +8,12 @@ This project is a first attempt at digitizing sacred spaces in VR. The applicati
 4. Activate Developer Mode on Meta Quest
 5. Install Android Tools
 6. Go to Project Settings > Player > Publishing Information
-   1. Enable Custom Keystore
-   2. Click the drop-down below Custom Keystore
-   3. Select Browse to load the keystore from your local drive (Available in Sciebo at PG_DSS_VR.keystore).
-   4. Enter the password for the keystore in the Password field (Available in Azure Devops Wiki).
-   5. Select the Project Key & insert the same Password again.
+   1. Add the keystore (following steps). If you don't have access to the current keystore skipe the following steps 2-6 and create a new one.
+   2. Enable Custom Keystore
+   3. Click the drop-down below Custom Keystore
+   4. Select Browse to load the keystore from your local drive (Available in Sciebo at PG_DSS_VR.keystore).
+   5. Enter the password for the keystore in the Password field (Available in Azure Devops Wiki).
+   6. Select the Project Key & insert the same Password again.
 7. Go To Build > Build options
 8. Connect Meta Quest to PC
 9. Select connected Meta Quest in Build options
